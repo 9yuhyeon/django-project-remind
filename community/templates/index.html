@@ -8,12 +8,11 @@
 </head>
 <body>
     <h1>모든 게시글 리스트</h1>
+    <a href="{% url 'community:create_article' %}"><h3>📝 게시글 작성하기</h3></a>
     {% for article in articles %}
         <div>
             <h3>글 제목 : {{ article.title }}</h3>
-            <p>글 내용 : {{ article.content }}</p>
-            <p>작성자 : {{ article.user }}</p>
-            <p>작성 시간 : {{ article.created_at }}</p>
+            <a href="{% url "community:article_detail" article.id %}">상세 페이지</a>
         </div>
     {% endfor %}
 </body>
