@@ -44,6 +44,6 @@ def user(request):
 def profile(request, username):
     user = get_object_or_404(User, username=username)
     context = {
-        'username':username,
+        'user':user,
     }
     return render(request, 'profile.html', context)
