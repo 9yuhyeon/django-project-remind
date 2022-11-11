@@ -9,4 +9,6 @@ urlpatterns = [
     path('<int:article_id>/', views.article_detail, name='article_detail'), #게시글 상세
     path('<int:article_id>/update_article/', views.update_article, name='update_article'), # 게시글 수정
     path('<int:article_id>/delete_article/', views.delete_article, name='delete_article'), # 게시글 삭제
+    path('<int:article_id>/create_comment/', views.create_comment, name='create_comment'), # 댓글 작성
+    path('<int:article_id>/delete_comment/<int:comment_id>', views.delete_comment, name='delete_comment'), # 댓글 삭제
 ]
