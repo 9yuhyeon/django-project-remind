@@ -32,11 +32,11 @@ def login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             loginsession(request, user)
-            return redirect('users:user')
+            return redirect('community:index')
         else:
             return HttpResponse('로그인 실패!')
 
-
+# 필요없는 놈
 def user(request):
     return HttpResponse(request.user)
 
