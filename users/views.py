@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import User
 from django.contrib.auth import authenticate, login as loginsession
 
+
 # Create your views here.
 def signup(request):
     if request.method == 'GET':

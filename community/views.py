@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
-from .models import Article
+from .models import Article, Comment
 
 # Create your views here.
 def index(request):
@@ -54,3 +54,21 @@ def delete_article(request, article_id):
         else:
             article.delete()
             return redirect('community:index')
+
+
+def create_comment(request, article_id):
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        user = request.user
+        Comment.objects.create(content=content, user=user, article_id=article_id)
+        return redirect('community:article_detail', article_id)
+
+
+def delete_comment(request, article_id, comment_id):
+    if request.method == 'POST':
+        comment = Comment.objects.get(id=comment_id)
+        if comment.user == request.user:
+            comment.delete()
+            return redirect('community:article_detail', article_id)
+        else:
+            return HttpResponse('권한이 없습니다!')
